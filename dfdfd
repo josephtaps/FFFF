@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal Aviator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: background 0.5s ease;
+    }
+
+    .pulse-bg {
+      animation: backgroundPulse 2.5s ease-in-out;
+    }
+
+    @keyframes backgroundPulse {
+      0% { background: #0f0c29; }
+      50% { background: #4b0082; }
+      100% { background: #0f0c29; }
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      color: #ffcc00;
+      text-shadow: 0 0 10px #ffcc00;
+      text-transform: uppercase;
+    }
+
+    #online-count {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 14px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px #00ffcc;
+      font-size: 1.2rem;
+      color: #00ffcc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .online-indicator {
+      width: 12px;
+      height: 12px;
+      background-color: #00ff00;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    #signal-box {
+      margin: 10px auto 5px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      width: 80%;
+      max-width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffcc;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #safety-text {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: yellow;
+    }
+
+    .button {
+      display: block;
+      margin: 14px auto;
+      padding: 15px 25px;
+      background-color: #ff0055;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      width: 80%;
+      max-width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .button:hover {
+      box-shadow: 0 0 20px #ff0055, 0 0 30px #ff0055 inset;
+      transform: scale(1.05);
+    }
+
+    .primary-button {
+      background-color: #00cc99;
+      font-size: 1.4rem;
+      padding: 20px 35px;
+      max-width: 340px;
+      animation: pulse 2s infinite;
+      text-transform: uppercase;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px #00ffcc; }
+      50% { transform: scale(1.05); box-shadow: 0 0 25px #00ffcc; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #00ffcc; }
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      #signal-box {
+        font-size: 1.4rem;
+      }
+      .button {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
+      .primary-button {
+        font-size: 1.2rem;
+        padding: 18px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>PRÉDICTEUR POUR AVIATOR</h1>
+
+  <div id="online-count">
+    <span class="online-indicator"></span>
+    <span id="online-number">... utilisateurs en ligne</span>
+  </div>
+
+  <div id="signal-wrapper" style="position: relative; display: inline-block;">
+    <div id="signal-box">Appuyez sur le bouton ci-dessous pour recevoir un signal</div>
+  </div>
+
+  <div id="safety-text">🔒 100% sécurité - service officiel Aviator</div>
+
+  <div style="margin-top: 20px;"></div>
+  <button class="button primary-button" onclick="generateSignal()">OBTENIR UN SIGNAL</button>
+  <a href="https://t.me/ArgentSansEffortBot" class="button">Écrire à Joseph</a>
+  <a href="https://affpa.top/L?tag=d_4323630m_16307c_&site=4323630&ad=16307&r=registration" class="button">JOUER<br><strong style="color: yellow;">BF772 énormes bonus</strong></a>
+
+  <script>
+    function generateSignal() {
+      const body = document.body;
+      const box = document.getElementById('signal-box');
+      box.innerText = 'Analyse...';
+      body.classList.add('pulse-bg');
+      setTimeout(() => {
+        let rand = Math.random();
+        let signal;
+        if (rand < 0.8) {
+          signal = (Math.random() * 5 + 1).toFixed(2);
+        } else if (rand < 0.95) {
+          signal = (Math.random() * 4 + 6).toFixed(2);
+        } else {
+          signal = (Math.random() * 60 + 10).toFixed(2);
+        }
+        box.innerText = 'SIGNAL: ' + signal + 'x';
+        body.classList.remove('pulse-bg');
+      }, 2500);
+    }
+
+    let currentOnline = Math.floor(Math.random() * 29) + 61;
+    function updateOnlineUsers() {
+      const change = Math.floor(Math.random() * 3) - 1;
+      currentOnline = Math.max(61, Math.min(89, currentOnline + change));
+      const onlineElem = document.getElementById('online-number');
+      if (onlineElem) {
+        onlineElem.innerText = currentOnline + ' utilisateurs en ligne';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      setInterval(updateOnlineUsers, 10000);
+      updateOnlineUsers();
+    });
+  </script>
+</body>
+</html>
